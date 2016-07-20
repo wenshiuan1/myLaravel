@@ -1,6 +1,5 @@
 <?php
-use App\Task;
-use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -11,12 +10,13 @@ use Illuminate\Http\Request;
 | and give it the controller to call when that URI is requested.
 |
 */
-
+use App\Task;
+use Illuminate\Http\Request;
 
 /*顯示所有任務*/
  
 Route::get('/', function () {
-    //
+    return view('task');
 });
 
 /*接收表單來新增任務*/
