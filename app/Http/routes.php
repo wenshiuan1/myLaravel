@@ -16,8 +16,12 @@ use Illuminate\Http\Request;
 /*顯示所有任務*/
  
 Route::get('/', function () {
-    return view('task');
+    $taskssss= Task::orderBy("created_at","asc")->get();
+
+    return view('task',[ "abc"=>$taskssss]);
+
 });
+
 
 /*接收表單來新增任務*/
 
