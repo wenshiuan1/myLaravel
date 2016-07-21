@@ -26,7 +26,7 @@ Route::get('/', function () {
 /*接收表單來新增任務*/
 
 Route::post('/task', function (Request $request) {
-    $validator = Validator::make($request->all(),["name"=>"required|max:2"]);
+    $validator = Validator::make($request->all(),["name"=>"required|max:20"]);
 
     if($validator->fails()){
 //        return "資料錯誤";
@@ -43,5 +43,6 @@ Route::post('/task', function (Request $request) {
 
 /*刪除任務*/
 Route::delete('/task/{id}', function ($id) {
-    //
+    Task::findOrFail($id)->delete();
+    return redirect("/");
 });

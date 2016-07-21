@@ -51,17 +51,23 @@
                         <table class="table table-striped task-table">
 
                             <thead>
-                            <th>TTask</th>
+                            <th>任務名稱</th>
                             <th>&nbsp;</th>
                             </thead>
 
                             <tbody>
                             @foreach($abc as $tt)
                                 <tr>
-                                    <td class="table-text">
-                                        <div>{{$tt->name}}</div>
+                                    <td class="table-text"><div>{{$tt->name}}</div></td>
+                                    <td>
+                                        <form action="{{url("task/$tt->id")}}" method="post">
+                                            {{ csrf_field() }}
+                                            {{ method_field("delete") }}
+                                            <button type="submit" class="btn btn-danger">
+                                                <i class="fa fa-btn fa-trash"></i>DELETE
+                                                </button>
+                                        </form>
                                     </td>
-                                    <td></td>
                                 </tr>
                             @endforeach
                             </tbody>
