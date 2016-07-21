@@ -22,7 +22,19 @@ Route::get('/', function () {
 /*接收表單來新增任務*/
 
 Route::post('/task', function (Request $request) {
-    //
+    $validator = Validator::make($request->all(),["name"=>"required|max:2"]);
+
+    if($validator->fails()){
+//        return "資料錯誤";
+        return redirect('/')
+            ->withInput()
+            ->withErrors($validator);
+    }
+
+    $task=new Task;
+    $task->name=$request->name;
+    $task->save();
+    return redirect("/");
 });
 
 /*刪除任務*/
